@@ -29,7 +29,7 @@ exports.create = function(req, res) {
 
 exports.location = function(req, res) {
     var uri = 'http://maps.googleapis.com/maps/api/staticmap?center='+req.body.latitude+','+req.body.longitude+'&format=jpg&size=200x200&zoom=17&markers=color:blue%7Clabel:S%7C'+req.body.latitude+','+req.body.longitude;
-    //console.log(uri);
+    console.log(uri);
 
     request.head(uri, function(err, resR, body){
         var contenType = resR.headers['content-type'];

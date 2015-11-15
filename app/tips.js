@@ -8,7 +8,7 @@ module.exports = function(app, passport) {
             if (err)
                 return res.status(400).send(err);
             res.send(tips);
-        }).sort({createDate: -1});
+        }).sort({createDate: 1});
     });
 
     app.post('/api/tip', isLoggedIn, function(req, res) {
