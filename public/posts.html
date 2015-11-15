@@ -13,6 +13,7 @@
     <![endif]-->
     <link href="css/styles.css" rel="stylesheet">
 
+
 </head>
 <body>
 <div class="wrapper">
@@ -51,12 +52,12 @@
                                 <a href="#"><i class="glyphicon glyphicon-home"></i> Top</a>
                             </li>
                             <li>
-                                <a href="#postModal" role="button" data-toggle="modal"><i
+                                <a href="#postModal" role="button" data-toggle="modal" id="plusbutton"><i
                                         class="glyphicon glyphicon-plus"></i> Post</a>
                             </li>
-                            <li>
-                                <a href="#"><span class="badge">badge</span></a>
-                            </li>
+                            <!--<li>-->
+                            <!--<a href="#"><span class="badge">badge</span></a>-->
+                            <!--</li>-->
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
                             <li class="dropdown">
@@ -90,14 +91,10 @@
                                     <div class="panel-thumbnail"><img src="img/logo.jpeg" class="img-responsive"></div>
                                     <div class="panel-body">
                                         <p class="lead">Top Zonas Zucias</p>
+                                        <ul class="list-group">
 
-                                        <p>sopocachi 100%</p>
-
-                                        <p>sopocachi 100%</p>
-
-                                        <p>sopocachi 100%</p>
-
-                                        <p>sopocachi 100%</p>
+                                            <section class="zonas"></section>
+                                        </ul>
 
                                         <p>
 
@@ -137,13 +134,10 @@
                                     <div class="panel-heading"><a href="#" class="pull-right">View all</a> <h4>Tips</h4>
                                     </div>
                                     <div class="panel-body">
-                                        <img src="//placehold.it/150x150" class="img-circle pull-right"> <a href="#">Free
-                                        @Bootply</a>
+                                        <img src="//placehold.it/150x150" class="img-circle pull-right"> <a href="#">Links</a>
 
                                         <div class="clearfix"></div>
-                                        There a load of new free Bootstrap 3 ready templates at Bootply. All of these
-                                        templates are free and don't require extensive customization to the Bootstrap
-                                        baseline.
+                                        loren ipsum
                                         <hr>
                                         <ul class="list-unstyled">
                                             <li><a href="http://www.bootply.com/templates">Dashboard</a></li>
@@ -160,7 +154,7 @@
                             <div class="col-sm-7">
 
 
-                            <section class="posts"></section>
+                                <section class="posts"></section>
 
 
 
@@ -217,14 +211,19 @@
             <div class="modal-body">
                 <form class="form center-block">
                     <div class="form-group">
+                        <input type="text" class="form-control" id="zoneName2" placeholder="Nombre de la zona">
+
                         <textarea class="form-control input-lg" autofocus=""
-                                  placeholder="What do you want to share?"></textarea>
+                                  placeholder="Que descripcion desea" id="description2"></textarea>
+                        <div id="myMapContainerId2" style="width: 100%; height: 400px;"></div>
+                        <input type="file" id="inputFile2" name="input">
+
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
                 <div>
-                    <button class="btn btn-primary btn-sm" data-dismiss="modal" aria-hidden="true">Post</button>
+                    <button class="btn btn-primary btn-sm" data-dismiss="modal" aria-hidden="true" id = "mainsubmit2">Post</button>
                     <ul class="pull-left list-inline">
                         <li><a href=""><i class="glyphicon glyphicon-upload"></i></a></li>
                         <li><a href=""><i class="glyphicon glyphicon-camera"></i></a></li>
@@ -246,9 +245,20 @@
 <script src="js/models/post.js"></script>
 <script src="js/collections/posts.js"></script>
 <script src="js/views/post-view.js"></script>
+
+<script src="js/models/zona.js"></script>
+<script src="js/collections/zonas.js"></script>
+<script src="js/views/zona-view.js"></script>
+
 <script src="js/views/app.js"></script>
 
 
+<script type="text/template" id="zona-template">
+    <li class="list-group-item">
+        <span class="label label-default label-pill pull-right"><%= ranking %></span>
+        <%= name %>
+    </li>
+</script>
 <script type="text/template" id="post-template">
     <div class="panel panel-default">
         <div class="panel-heading"><a href="#" class="pull-right"><%= user.name %></a>

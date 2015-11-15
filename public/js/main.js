@@ -6,22 +6,36 @@ Z2.Routers = {};
 
 window.collections = {};
 window.views = {};
-var logged = function () {
-    
-    return true;
-};
+var logged = false;
 
+
+function getURLParameter(name) {
+    return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||null
+}
 $(document).ready(function(){/* off-canvas sidebar toggle */
+    var myvar = getURLParameter('user');
+    console.log(myvar);
 
-    if( !logged ) {
+    if (!myvar){
         $(".well").hide();
         $("#plusbutton").hide();
         //return false;
-
     } else {
         $(".well").show();
         $("#plusbutton").show();
+
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:3000/api/user/"+myvar,
+            success: function (data) {
+                console.log(data);
+                window.user = data;
+            }
+        });
     }
+
+
+
 
    console.log("main.js loaded");
    window.views.app = new Z2.Views.App( $('body') );
@@ -72,9 +86,9 @@ $(document).ready(function(){/* off-canvas sidebar toggle */
                     var imggoogleID = data.file._id,
                         zoneName = $('#zoneName').val(),
                         description = $('#description').val(),
-                        userID = "5647bcd51dec3c0c76c31bcf",
-                        userName =  "Juan Perez",
-                        userEmail = "juan@aaa.com",
+                        userID = window.user._id || '123456',
+                        userName =  window.user.facebook.name || 'Anonimus',
+                        userEmail = window.user.facebook.email || 'anonimus@f.com',
                         imgID = "";
                     var dataFile = new FormData();
                     jQuery.each(jQuery('#inputFile')[0].files, function(i, file) {
