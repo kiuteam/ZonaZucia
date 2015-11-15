@@ -15,26 +15,68 @@ module.exports = function(app, passport) {
     app.post('/api/post', isLoggedIn, function(req, res) {
         // create the user
         var newPost         = new ZonaLocation();
-        newPost.zoneId      = req.body.zonaId;
-        newPost.description = req.body.description;
-        newPost.user        = req.body.user;
-        newPost.images      = req.body.images;
-        newPost.status      = req.body.status;
-        newPost.save(function(err) {
+        Zona.findOne({name:req.body.zonaName}, function(err, zona) {
             if (err)
                 return res.status(400).send(err);
-            var update = {};
-            if(newPost.status){
-                update = { $inc: { ranking: 1 }};
-            } else{
-                update = { $inc: { ranking: -11 }};
+            if (zona) {
+                // si la zona ya existe
+                newPost.zoneId      = zona._id;
+                newPost.zoneName    = req.body.zonaName;
+                newPost.description = req.body.description;
+                newPost.user        = req.body.user;
+                newPost.images      = req.body.images;
+                newPost.status      = req.body.status;
+                newPost.save(function(err) {
+                    if (err)
+                        return res.status(400).send(err);
+                    var update = {};
+                    if(newPost.status){
+                        update = { $inc: { ranking: 1 }};
+                    } else{
+                        update = { $inc: { ranking: -1 }};
+                    }
+                    Zona.update({ _id: zona._id }, update, {}, function(err, posts) {
+                        if (err)
+                            return res.status(400).send(err);
+                        //console.log(posts)
+                    });
+                    return res.status(201).send(newPost);
+                });
+            } else {
+                // esto si es una nueva zona
+                var newZona            = new Zona();
+                newZona.name    = req.body.zonaName;
+                if(newPost.status){
+                    newZona.ranking = 1;
+                } else{
+                    newZona.ranking = 0;
+                }
+                newZona.save(function(err) {
+                    if (err)
+                        return res.status(400).send(err);
+                    newPost.zoneId      = newZona._id;
+                    newPost.zoneName    = req.body.zonaName;
+                    newPost.description = req.body.description;
+                    newPost.user        = req.body.user;
+                    newPost.images      = req.body.images;
+                    newPost.status      = req.body.status;
+                    newPost.save(function(err) {
+                        if (err)
+                            return res.status(400).send(err);
+                        return res.status(201).send(newPost);
+                    });
+                });
+                // if there is a user id already but no token (user was linked at one point and then removed)
             }
-            Zona.update({ _id:  mongoose.Types.ObjectId(req.body.zonaId) }, update, {}, function(err, posts) {
-                if (err)
-                    return res.status(400).send(err);
-                console.log(posts)
-            });
-            return res.status(201).send(newPost);
+        });
+    });
+
+    app.get('/api/search/:zoneName', isLoggedIn, function(req, res) {
+        ZonaLocation.find({zoneName:req.params.zoneName}, function(err, posts) {
+            if (err)
+                return res.status(400).send(err);
+                // si la zona ya existe
+            return res.status(200).send(posts);
         });
     });
 };
