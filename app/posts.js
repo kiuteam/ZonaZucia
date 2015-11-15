@@ -30,7 +30,7 @@ module.exports = function(app, passport) {
                     if (err)
                         return res.status(400).send(err);
                     var update = {};
-                    if(newPost.status){
+                    if(!newPost.status){
                         update = { $inc: { ranking: 1 }};
                     } else{
                         update = { $inc: { ranking: -1 }};
@@ -46,11 +46,11 @@ module.exports = function(app, passport) {
                 // esto si es una nueva zona
                 var newZona            = new Zona();
                 newZona.name    = req.body.zoneName;
-                if(newPost.status){
+                //if(newPost.status){
                     newZona.ranking = 1;
-                } else{
-                    newZona.ranking = 0;
-                }
+                //} else{
+                    //newZona.ranking = 0;
+                //}
                 newZona.save(function(err) {
                     if (err)
                         return res.status(400).send(err);
