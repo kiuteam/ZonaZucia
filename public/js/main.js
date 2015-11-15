@@ -23,21 +23,24 @@ $(document).ready(function(){/* off-canvas sidebar toggle */
     window.collections.posts.fetch();
 
     $('#mainsubmit').click(function(){
-        var locationData = new FormData();
+        var locationData = {
+            latitude: window.position.coords.latitude,
+            longitude: window.position.coords.longitude
+        };
 
-        locationData.append('latitude', window.position.coords.latitude);
-        locationData.append('longitude', window.position.coords.longitude);
 
         jQuery.ajax({
             url: 'http://localhost:3000/api/location',
-            data: locationData,
-            cache: false,
-            processData: false,
+            data: JSON.stringify(locationData),
+            beforeSend: function (xhrObj) {
+                xhrObj.setRequestHeader("Content-Type", "application/json");
+                //xhrObj.setRequestHeader("Accept","application/json");
+            },
             type: 'POST',
             success: function (data) {
                 if(data.file) {
                     var imggoogleID = data.file._id,
-                        zonaName = $('#zonaName').val(),
+                        zoneName = $('#zoneName').val(),
                         description = $('#description').val(),
                         userID = "5647bcd51dec3c0c76c31bcf",
                         userName =  "Juan Perez",
@@ -58,7 +61,7 @@ $(document).ready(function(){/* off-canvas sidebar toggle */
                              imgID = data.file._id || '';
                             var data = {
                                 //"zonaId":"5647bcd51dec3c0c76c31bcf",
-                                zonaName: zonaName,
+                                zoneName: zoneName,
                                 "description": description,
                                 "user":{
                                     "userId": userID,
@@ -74,6 +77,8 @@ $(document).ready(function(){/* off-canvas sidebar toggle */
                                     "image": imgID
                                 }
                             };
+
+
                             $.ajax({
                                 type: "POST",
                                 url: "http://localhost:3000/api/post",
@@ -86,6 +91,8 @@ $(document).ready(function(){/* off-canvas sidebar toggle */
                                     console.log('almacenamiento exitoso');
                                 }
                             });
+                            //rendering data
+                            collections.posts.add(data);
 
                         }
                     });
