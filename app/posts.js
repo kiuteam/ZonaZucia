@@ -15,13 +15,13 @@ module.exports = function(app, passport) {
     app.post('/api/post', isLoggedIn, function(req, res) {
         // create the user
         var newPost         = new ZonaLocation();
-        Zona.findOne({name:req.body.zonaName}, function(err, zona) {
+        Zona.findOne({name:req.body.zoneName}, function(err, zona) {
             if (err)
                 return res.status(400).send(err);
             if (zona) {
                 // si la zona ya existe
                 newPost.zoneId      = zona._id;
-                newPost.zoneName    = req.body.zonaName;
+                newPost.zoneName    = req.body.zoneName;
                 newPost.description = req.body.description;
                 newPost.user        = req.body.user;
                 newPost.images      = req.body.images;
@@ -45,7 +45,7 @@ module.exports = function(app, passport) {
             } else {
                 // esto si es una nueva zona
                 var newZona            = new Zona();
-                newZona.name    = req.body.zonaName;
+                newZona.name    = req.body.zoneName;
                 if(newPost.status){
                     newZona.ranking = 1;
                 } else{
@@ -55,7 +55,7 @@ module.exports = function(app, passport) {
                     if (err)
                         return res.status(400).send(err);
                     newPost.zoneId      = newZona._id;
-                    newPost.zoneName    = req.body.zonaName;
+                    newPost.zoneName    = req.body.zoneName;
                     newPost.description = req.body.description;
                     newPost.user        = req.body.user;
                     newPost.images      = req.body.images;
