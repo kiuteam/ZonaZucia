@@ -23,6 +23,7 @@ module.exports = function(app, passport) {
                 // create the user
                 var newTip     = new Tip();
                 newTip.title   = req.body.title;
+                newTip.type   = req.body.type;
                 newTip.url     = req.body.url;
                 newTip.description = req.body.description;
                 newTip.save(function(err) {

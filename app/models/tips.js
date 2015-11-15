@@ -6,6 +6,7 @@ var tipSchema = mongoose.Schema({
     title       :String,
     url         :String,
     description :String,
+    type        :String,
     createDate  :{ type: Date, default: Date.now }
 });
 
