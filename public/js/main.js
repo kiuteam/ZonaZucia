@@ -17,7 +17,7 @@ $(document).ready(function(){/* off-canvas sidebar toggle */
         // agregar nuevas vistas de post aqui
         var view = new Z2.Views.Post({model: model});
         view.render();
-        view.$el.appendTo('.posts');
+        view.$el.prependTo('.posts');
     });
     window.collections.posts.fetch();
 

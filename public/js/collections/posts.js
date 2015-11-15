@@ -3,6 +3,6 @@
  */
 Z2.Collections.Posts = Backbone.Collection.extend({
     model: Z2.Models.Post,
-    url: '/posts',
+    url: 'api/posts',
     name: 'posts'
 });
