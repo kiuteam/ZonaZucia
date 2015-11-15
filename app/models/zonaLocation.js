@@ -5,6 +5,7 @@ var bcrypt   = require('bcrypt-nodejs');
 // define the schema for our user model
 var zonaLocationSchema = mongoose.Schema({
     zoneId          :mongoose.Schema.Types.ObjectId,//id de la zona
+    zoneName        :String,
     description     :String,
     user            :mongoose.Schema.Types.Mixed,//{userId'':name:'',email:''}
     images          :mongoose.Schema.Types.Mixed,// {location:{image:'id1',latitude:'',longitude:''},image:'idImagen'}
