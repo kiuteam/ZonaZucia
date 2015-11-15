@@ -22,6 +22,21 @@ $(document).ready(function(){/* off-canvas sidebar toggle */
     });
     window.collections.posts.fetch();
 
+
+    window.collections.zonas = new Z2.Collections.Zonas();
+    window.collections.zonas.on('add',function(model){
+        console.log('se ha agregado una zona', model.toJSON());
+        // agregar nuevas vistas de post aqui
+
+        var view = new Z2.Views.Zona({model: model});
+        view.render();
+        view.$el.prependTo('.zonas');
+    });
+    window.collections.zonas.fetch();
+
+
+
+
     $('#mainsubmit').click(function(){
         var locationData = {
             latitude: window.position.coords.latitude,
