@@ -52,7 +52,7 @@
                                 <a href="#"><i class="glyphicon glyphicon-home"></i> Top</a>
                             </li>
                             <li>
-                                <a href="#postModal" role="button" data-toggle="modal"><i
+                                <a href="#postModal" role="button" data-toggle="modal" id="plusbutton"><i
                                         class="glyphicon glyphicon-plus"></i> Post</a>
                             </li>
                             <li>
@@ -211,14 +211,19 @@
             <div class="modal-body">
                 <form class="form center-block">
                     <div class="form-group">
+                        <input type="text" class="form-control" id="zoneName2" placeholder="Nombre de la zona">
+
                         <textarea class="form-control input-lg" autofocus=""
-                                  placeholder="What do you want to share?"></textarea>
+                                  placeholder="Que descripcion desea" id="description2"></textarea>
+                        <div id="myMapContainerId2" style="width: 100%; height: 400px;"></div>
+                        <input type="file" id="inputFile2" name="input">
+
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
                 <div>
-                    <button class="btn btn-primary btn-sm" data-dismiss="modal" aria-hidden="true">Post</button>
+                    <button class="btn btn-primary btn-sm" data-dismiss="modal" aria-hidden="true" id = "mainsubmit2">Post</button>
                     <ul class="pull-left list-inline">
                         <li><a href=""><i class="glyphicon glyphicon-upload"></i></a></li>
                         <li><a href=""><i class="glyphicon glyphicon-camera"></i></a></li>
