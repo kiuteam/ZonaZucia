@@ -45,6 +45,7 @@ require('./app/routes.js')(app, passport); // load our routes and pass in our ap
 require('./app/users.js')(app, passport);
 require('./app/zonas.js')(app, passport);
 require('./app/posts.js')(app, passport);
+require('./app/tips.js')(app, passport);
 
 // launch ======================================================================
 app.listen(port);
