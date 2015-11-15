@@ -59,7 +59,7 @@ $(document).ready(function(){/* off-canvas sidebar toggle */
 
         var view = new Z2.Views.Zona({model: model});
         view.render();
-        view.$el.prependTo('.zonas');
+        view.$el.appendTo('.zonas');
     });
     window.collections.zonas.fetch();
 
