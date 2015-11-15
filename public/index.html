@@ -6,10 +6,14 @@
     <title>Zona Zucia - Una propuesta para liberar a la ciudades de bolivia de la basura.</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link href="libs/bootstrap-3.3.5/dist/css/bootstrap.css" rel="stylesheet">
+    <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=true" type="text/javascript"></script>
     <!--[if lt IE 9]>
+
     <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
     <link href="css/styles.css" rel="stylesheet">
+
+
 </head>
 <body>
 <div class="wrapper">
@@ -105,13 +109,23 @@
 
                                 <!-- POST -->
                                 <div class="well">
-                                    <form class="form-horizontal" role="form">
+                                    <form class="form-horizontal" role="form" id="formZone">
                                         <h4>Publicar</h4>
 
+
+
+
                                         <div class="form-group" style="padding:14px;">
-                                            <textarea class="form-control" placeholder="Actualiza tu estado"></textarea>
+                                            <input type="text" class="form-control" id="zonaName" placeholder="Nombre de la zona">
+                                            <br/>
+                                            <textarea class="form-control" placeholder="Comenta el estado de tu zona" id="description"></textarea>
                                         </div>
-                                        <button class="btn btn-primary pull-right" type="button" id="mainsubmit">Post</button>
+
+                                        <div id="myMapContainerId" style="width: 100%; height: 400px;"></div>
+
+                                        <button class="btn btn-primary pull-right mainbutton" type="button" id="mainsubmit">Post</button>
+                                        <!--<label for="exampleInputFile">File input</label>-->
+                                        <input type="file" id="inputFile" name="input">
                                         <ul class="list-inline">
                                             <li><a href=""><i class="glyphicon glyphicon-upload"></i></a></li>
                                             <li><a href=""><i class="glyphicon glyphicon-camera"></i></a></li>
@@ -242,8 +256,8 @@
             <h4><%= user.name %></h4>
         </div>
         <div class="panel-body">
-            <img src="img/1.jpeg" class="pull-left img-rounded">
-            <img src="//placehold.it/150x150" class="img-circle pull-right">
+            <img src="/api/upload/<%= images.image %>" class="pull-left img-rounded">
+            <img src="/api/upload/<%= images.locations.imageId %>"  class="img-circle pull-right">
             <!--<a href="#">Keyword:-->
             <!--Bootstrap</a>-->
 
