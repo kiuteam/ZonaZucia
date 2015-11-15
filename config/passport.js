@@ -157,7 +157,7 @@ module.exports = function(passport) {
 
             // check if the user is already logged in
             if (!req.user) {
-
+                console.log(profile);
                 User.findOne({ 'facebook.id' : profile.id }, function(err, user) {
                     if (err)
                         return done(err);
@@ -167,8 +167,8 @@ module.exports = function(passport) {
                         // if there is a user id already but no token (user was linked at one point and then removed)
                         if (!user.facebook.token) {
                             user.facebook.token = token;
-                            user.facebook.name  = profile.name.givenName + ' ' + profile.name.familyName;
-                            user.facebook.email = (profile.emails.value || '').toLowerCase();
+                            user.facebook.name  = profile.displayName;
+                            user.facebook.email = '';//(profile.emails.value || '').toLowerCase();
 
                             user.save(function(err) {
                                 if (err)
@@ -204,7 +204,7 @@ module.exports = function(passport) {
                 user.facebook.id    = profile.id;
                 user.facebook.token = token;
                 user.facebook.name  = profile.name.givenName + ' ' + profile.name.familyName;
-                user.facebook.email = (profile.emails[0].value || '').toLowerCase();
+                user.facebook.email = '';//(profile.emails[0].value || '').toLowerCase();
 
                 user.save(function(err) {
                     if (err)

@@ -6,7 +6,10 @@ Z2.Routers = {};
 
 window.collections = {};
 window.views = {};
-var logged = false;
+var logged = function () {
+    
+    return true;
+};
 
 $(document).ready(function(){/* off-canvas sidebar toggle */
 
