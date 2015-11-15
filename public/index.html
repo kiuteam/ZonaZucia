@@ -1,33 +1,274 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Node Authentication</title>
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
-    <style>
-        body         { padding-top:80px; }
-    </style>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>Zona Zucia - Una propuesta para liberar a la ciudades de bolivia de la basura.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href="libs/bootstrap-3.3.5/dist/css/bootstrap.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link href="css/styles.css" rel="stylesheet">
 </head>
 <body>
-<div class="container">
+<div class="wrapper">
+    <div class="box">
+        <div class="row row-offcanvas row-offcanvas-left">
 
-    <div class="jumbotron text-center">
-        <h1><span class="fa fa-lock"></span> Node Authentication</h1>
+            <!-- main right col -->
+            <div class="column col-sm-12 col-xs-11" id="main">
 
-        <p>Login or Register with:</p>
+                <!-- top nav -->
+                <div class="navbar navbar-blue navbar-static-top">
+                    <div class="navbar-header">
+                        <button class="navbar-toggle" type="button" data-toggle="collapse"
+                                data-target=".navbar-collapse">
+                            <span class="sr-only">Toggle</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a href="/" class="navbar-brand logo">Z&sup2</a>
+                    </div>
+                    <nav class="collapse navbar-collapse" role="navigation">
+                        <form class="navbar-form navbar-left">
+                            <div class="input-group input-group-sm" style="max-width:360px;">
+                                <input type="text" class="form-control" placeholder="Search" name="srch-term"
+                                       id="srch-term">
 
-        <a href="/login" class="btn btn-default"><span class="fa fa-user"></span> Local Login</a>
-        <a href="/signup" class="btn btn-default"><span class="fa fa-user"></span> Local Signup</a>
-        <a href="/auth/facebook" class="btn btn-primary"><span class="fa fa-facebook"></span> Facebook</a>
-        <a href="/auth/twitter" class="btn btn-info"><span class="fa fa-twitter"></span> Twitter</a>
-        <a href="/auth/google" class="btn btn-danger"><span class="fa fa-google-plus"></span> Google+</a>
+                                <div class="input-group-btn">
+                                    <button class="btn btn-default" type="submit"><i
+                                            class="glyphicon glyphicon-search"></i></button>
+                                </div>
+                            </div>
+                        </form>
+                        <ul class="nav navbar-nav">
+                            <li>
+                                <a href="#"><i class="glyphicon glyphicon-home"></i> Top</a>
+                            </li>
+                            <li>
+                                <a href="#postModal" role="button" data-toggle="modal"><i
+                                        class="glyphicon glyphicon-plus"></i> Post</a>
+                            </li>
+                            <li>
+                                <a href="#"><span class="badge">badge</span></a>
+                            </li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span> Login
+                                </a>
+                                <ul class="dropdown-menu">
+
+                                    <button type="button" id="btnLogin" class="btn">
+                                        Login with faceebook
+                                    </button>
+
+
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <!-- /top nav -->
+
+                <div class="padding">
+                    <div class="full col-sm-9">
+
+                        <!-- content -->
+                        <div class="row">
+
+                            <!-- main col left -->
+                            <div class="col-sm-5">
+
+                                <div class="panel panel-default">
+                                    <div class="panel-thumbnail"><img src="img/logo.jpeg" class="img-responsive"></div>
+                                    <div class="panel-body">
+                                        <p class="lead">Top Zonas Zucias</p>
+
+                                        <p>sopocachi 100%</p>
+
+                                        <p>sopocachi 100%</p>
+
+                                        <p>sopocachi 100%</p>
+
+                                        <p>sopocachi 100%</p>
+
+                                        <p>
+
+                                        </p>
+                                    </div>
+                                </div>
+
+
+                                <!-- POST -->
+                                <div class="well">
+                                    <form class="form-horizontal" role="form">
+                                        <h4>Publicar</h4>
+
+                                        <div class="form-group" style="padding:14px;">
+                                            <textarea class="form-control" placeholder="Actualiza tu estado"></textarea>
+                                        </div>
+                                        <button class="btn btn-primary pull-right" type="button">Post</button>
+                                        <ul class="list-inline">
+                                            <li><a href=""><i class="glyphicon glyphicon-upload"></i></a></li>
+                                            <li><a href=""><i class="glyphicon glyphicon-camera"></i></a></li>
+                                            <li><a href=""><i class="glyphicon glyphicon-map-marker"></i></a></li>
+                                        </ul>
+                                    </form>
+                                </div>
+
+                                <div class="panel panel-default">
+                                    <div class="panel-heading"><a href="#" class="pull-right">View all</a> <h4>Tips</h4>
+                                    </div>
+                                    <div class="panel-body">
+                                        <img src="//placehold.it/150x150" class="img-circle pull-right"> <a href="#">Free
+                                        @Bootply</a>
+
+                                        <div class="clearfix"></div>
+                                        There a load of new free Bootstrap 3 ready templates at Bootply. All of these
+                                        templates are free and don't require extensive customization to the Bootstrap
+                                        baseline.
+                                        <hr>
+                                        <ul class="list-unstyled">
+                                            <li><a href="http://www.bootply.com/templates">Dashboard</a></li>
+                                            <li><a href="http://www.bootply.com/templates">Darkside</a></li>
+                                            <li><a href="http://www.bootply.com/templates">Greenfield</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                            <!-- main col right -->
+                            <div class="col-sm-7">
+
+
+                            <section class="posts"></section>
+
+
+
+                            </div>
+                        </div>
+                        <!--/row-->
+
+                        <!--<div class="row">-->
+                        <!--<div class="col-sm-6">-->
+                        <!--<a href="#">Twitter</a> <small class="text-muted">|</small> <a href="#">Facebook</a> <small class="text-muted">|</small> <a href="#">Google+</a>-->
+                        <!--</div>-->
+                        <!--</div>-->
+
+                        <div class="row" id="footer">
+                            <div class="col-sm-6">
+
+                            </div>
+                            <div class="col-sm-6">
+                                <p>
+                                    <a href="#" class="pull-right">kiu.dev.team 2015</a>
+                                </p>
+                            </div>
+                        </div>
+
+                        <hr>
+
+                        <h4 class="text-center">
+                            <a href=# target="ext"> </a>
+                        </h4>
+
+                        <hr>
+
+
+                    </div>
+                    <!-- /col-9 -->
+                </div>
+                <!-- /padding -->
+            </div>
+            <!-- /main -->
+
+        </div>
     </div>
-
-    <div class="text-center">
-        <p>A demo by <a href="http://scotch.io">Scotch</a>.</p>
-        <p>Visit the <a href="http://scotch.io/tutorials/javascript/easy-node-authentication-setup-and-local">tutorial</a>.</p>
-    </div>
-
 </div>
+
+
+<!--post modal-->
+<div id="postModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                Zona Zucia
+            </div>
+            <div class="modal-body">
+                <form class="form center-block">
+                    <div class="form-group">
+                        <textarea class="form-control input-lg" autofocus=""
+                                  placeholder="What do you want to share?"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <div>
+                    <button class="btn btn-primary btn-sm" data-dismiss="modal" aria-hidden="true">Post</button>
+                    <ul class="pull-left list-inline">
+                        <li><a href=""><i class="glyphicon glyphicon-upload"></i></a></li>
+                        <li><a href=""><i class="glyphicon glyphicon-camera"></i></a></li>
+                        <li><a href=""><i class="glyphicon glyphicon-map-marker"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- script references -->
+<script src="libs/jquery/jquery-1.10.2.js"></script>
+<script src="libs/lodash.js"></script>
+<script src="libs/backbone.js"></script>
+
+<script src="libs/bootstrap-3.3.5/dist/js/bootstrap.js"></script>
+<!--extends-->
+<script src="js/main.js"></script>
+<script src="js/models/post.js"></script>
+<script src="js/collections/posts.js"></script>
+<script src="js/views/post-view.js"></script>
+<script src="js/views/app.js"></script>
+
+
+<script type="text/template" id="post-template">
+    <div class="panel panel-default">
+        <div class="panel-heading"><a href="#" class="pull-right"><%= username %></a>
+            <h4><%= title %></h4>
+        </div>
+        <div class="panel-body">
+            <img src="<%= image %>" class="pull-left img-rounded">
+            <img src="//placehold.it/150x150" class="img-circle pull-right">
+            <!--<a href="#">Keyword:-->
+            <!--Bootstrap</a>-->
+
+            <div class="clearfix"></div>
+            <hr>
+            <p>
+                <%= description %>
+            </p>
+
+            <hr>
+            <form>
+                <div class="input-group">
+                    <div class="input-group-btn">
+                        <button class="btn btn-default">+1</button>
+                        <button class="btn btn-default"><i
+                                class="glyphicon glyphicon-share"></i></button>
+                    </div>
+                    <!--<input type="text" class="form-control" placeholder="Add a comment..">-->
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+</script>
+
 </body>
 </html>
