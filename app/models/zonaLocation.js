@@ -8,6 +8,7 @@ var zonaLocationSchema = mongoose.Schema({
     description     :String,
     user            :mongoose.Schema.Types.Mixed,//{userId'':name:'',email:''}
     images          :mongoose.Schema.Types.Mixed,// {location:{image:'id1',latitude:'',longitude:''},image:'idImagen'}
+    status          :Boolean,//true sucio, false limpio
     createDate      :{ type: Date, default: Date.now }
 });
 
