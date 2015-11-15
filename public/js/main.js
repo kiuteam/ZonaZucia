@@ -23,16 +23,15 @@ $(document).ready(function(){/* off-canvas sidebar toggle */
     window.collections.posts.fetch();
 
     $('#mainsubmit').click(function(){
-        var locationData = {
-            latitude: window.position.latitude,
-            longitude: window.position.longitude
-        };
+        var locationData = new FormData();
+
+        locationData.append('latitude', window.position.coords.latitude);
+        locationData.append('longitude', window.position.coords.longitude);
 
         jQuery.ajax({
             url: 'http://localhost:3000/api/location',
             data: locationData,
             cache: false,
-            contentType: false,
             processData: false,
             type: 'POST',
             success: function (data) {
@@ -69,8 +68,8 @@ $(document).ready(function(){/* off-canvas sidebar toggle */
                                 "images":{
                                     "locations":{
                                         "imageId": imggoogleID,
-                                        "latitude": window.position.latitude,
-                                        "longitude": window.position.longitude
+                                        "latitude": window.position.coords.latitude,
+                                        "longitude": window.position.coords.longitude
                                     },
                                     "image": imgID
                                 }
